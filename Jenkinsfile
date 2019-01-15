@@ -1,11 +1,16 @@
 pipeline {
-  agent {
-    // this image provides everything needed to run Cypress
-    docker {
-      image 'cypress/base:10'
+    
+  node {
+    /* Requires the Docker Pipeline plugin to be installed */
+    docker.image('cypress/base:10').inside {
+        stage('Test') {
+            sh 'node --version'
+        }
     }
   }
-    
+
+  
+  
   stages {
     // first stage installs node dependencies and Cypress binary
     stage('build') {
