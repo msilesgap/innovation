@@ -33,8 +33,14 @@
 // to see Administrator password - you will need it to configure Jenkins via localhost:8080 UI
 //    docker logs blue-ocean
 
-pipeline {
-  agent none
+pipeline {  
+  agent {
+    docker {
+        image 'maven:3-alpine'
+        label 'my-defined-label'
+        args  '-v /tmp:/tmp'
+    }
+  }
 
   stages {
     // first stage installs node dependencies and Cypress binary
