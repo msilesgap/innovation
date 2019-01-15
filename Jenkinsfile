@@ -1,6 +1,6 @@
 pipeline {
     
-  node {
+  agent {
     /* Requires the Docker Pipeline plugin to be installed */
     docker.image('cypress/base:10').inside {
         stage('Test') {
