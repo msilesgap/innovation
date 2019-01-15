@@ -1,4 +1,7 @@
 pipeline {
+  environment {
+        VERSION = sh(returnStdout: true, script: 'git describe --tags')
+    }
   agent {
     // this image provides everything needed to run Cypress
     docker {
