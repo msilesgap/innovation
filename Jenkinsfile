@@ -1,10 +1,9 @@
 pipeline {
-    agent none
+  agent none
     environment {
         VERSION = sh(returnStdout: true, script: 'git describe --tags')
     }
-}
-
+    
   stages {
     // first stage installs node dependencies and Cypress binary
     stage('build') {
